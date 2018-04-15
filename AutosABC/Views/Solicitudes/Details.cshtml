@@ -9,6 +9,16 @@
 <div>
     <h4>Solicitud</h4>
     <hr />
+
+    <!-- Searches for any Error Message during Auto adding. -->
+    @if ((string)@ViewData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @ViewData["ErrorMessage"]
+        </div>
+    }
+
+
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Fecha)
@@ -37,28 +47,27 @@
                     </tr>
                 </thead>
                 @foreach (var item in ViewData["AutoList"] as IEnumerable<AutosABC.Models.Auto>)
-        {
-            <tr>
-                <td>@item.Marca</td>
-                <td>@item.Modelo</td>
-                <td>@item.Folio</td>
-                <td>@item.DescripcionEstetica</td>
-                <td>
-                    @Html.ActionLink("Editar",
-                   "Edit",
-                   "Autos",
-                   new { @item.ID },
-                   null)
-                </td>
-            </tr>
-}
+                {
+                    <tr>
+                        <td>@item.Marca</td>
+                        <td>@item.Modelo</td>
+                        <td>@item.Folio</td>
+                        <td>@item.DescripcionEstetica</td>
+                        <td>
+                            @Html.ActionLink("Editar",
+                                     "Edit",
+                                     "Autos",
+                                     new { @item.ID },
+                                     null)
+                        </td>
+                    </tr>
+                }
             </table>
-            <!-- Nuevo auto-->
             @Html.ActionLink("NUEVO",
-                           "Crear",
-                           "Autos",
-                           new { @Model.SolicitudID },
-                           null)
+                                     "Crear",
+                                     "Autos",
+                                     new { @Model.SolicitudID },
+                                     null)
         </dd>
     </dl>
 </div>

@@ -4,13 +4,13 @@
     ViewData["Title"] = "Crear";
 }
 
-<h2>Crear nuevo</h2>
+<h2>Crear en Solicitud</h2>
 
 <h4>Auto</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Crear">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Marca" class="control-label"></label>
@@ -44,7 +44,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="SolicitudID" class="control-label"></label>
-                <select asp-for="SolicitudID" class ="form-control" asp-items="ViewBag.SolicitudID"></select>
+                <input asp-for="SolicitudID" class="form-control" value="@ViewData["Procedencia"]"/>
             </div>
             <div class="form-group">
                 <input type="submit" value="Crear" class="btn btn-default" />
@@ -54,7 +54,11 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    @Html.ActionLink("Regresar",
+                               "Details",
+                               "Solicitudes",
+                               new { id = @ViewData["Procedencia"] },
+                               null)
 </div>
 
 @section Scripts {

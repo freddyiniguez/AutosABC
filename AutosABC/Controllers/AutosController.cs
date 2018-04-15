@@ -46,10 +46,30 @@ namespace AutosABC.Controllers
 
         // GET: Autos/Crear/5
         // Method controller to create a new Auto within a specific SolicitudID
-        public IActionResult Crear(int id)
+        public IActionResult Crear(int SolicitudID)
         {
-            ViewData["SolicitudID"] = id;
+            ViewData["Procedencia"] = SolicitudID;
             return View();
+        }
+
+        // POST: Autos/Crear
+        // Method controller to save an Auto within a specific SolicitudID
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Crear([Bind("ID,Marca,Modelo,Folio,Color,TipoTransmision,DescripcionEstetica,SolicitudID")] Auto auto)
+        {
+            
+            if (ModelState.IsValid)
+            {
+                _context.Add(auto);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Details", "Solicitudes", new { id = auto.SolicitudID });
+            }
+            ViewData["ErrorMessage"] = "Ha ocurrido un error al crear el Auto.";
+            return RedirectToAction("Details", "Solicitudes", new { id = auto.SolicitudID });
+
         }
 
         // GET: Autos/Create

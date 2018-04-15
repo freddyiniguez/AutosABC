@@ -48,7 +48,14 @@ namespace AutosABC
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}"
+                );
+
+                // New route to integrate own action methods.
+                routes.MapRoute(
+                    name: "own",
+                    template: "{controller=Autos}/{action=Crear}/{id?}"
+                );
             });
         }
     }
