@@ -35,7 +35,7 @@ namespace AutosABC.Controllers
 
             var auto = await _context.Auto
                 .Include(a => a.Solicitud)
-                .SingleOrDefaultAsync(m => m.SolicitudID == id);
+                .SingleOrDefaultAsync(m => m.ID == id);
             if (auto == null)
             {
                 return NotFound();
@@ -56,7 +56,7 @@ namespace AutosABC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AutoID,Marca,Modelo,Folio,Color,TipoTransmision,DescripcionEstetica,SolicitudID")] Auto auto)
+        public async Task<IActionResult> Create([Bind("ID,Marca,Modelo,Folio,Color,TipoTransmision,DescripcionEstetica,SolicitudID")] Auto auto)
         {
             if (ModelState.IsValid)
             {
@@ -76,7 +76,7 @@ namespace AutosABC.Controllers
                 return NotFound();
             }
 
-            var auto = await _context.Auto.SingleOrDefaultAsync(m => m.SolicitudID == id);
+            var auto = await _context.Auto.SingleOrDefaultAsync(m => m.ID == id);
             if (auto == null)
             {
                 return NotFound();
@@ -90,9 +90,9 @@ namespace AutosABC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AutoID,Marca,Modelo,Folio,Color,TipoTransmision,DescripcionEstetica,SolicitudID")] Auto auto)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Marca,Modelo,Folio,Color,TipoTransmision,DescripcionEstetica,SolicitudID")] Auto auto)
         {
-            if (id != auto.SolicitudID)
+            if (id != auto.ID)
             {
                 return NotFound();
             }
@@ -106,7 +106,7 @@ namespace AutosABC.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AutoExists(auto.SolicitudID))
+                    if (!AutoExists(auto.ID))
                     {
                         return NotFound();
                     }
@@ -131,7 +131,7 @@ namespace AutosABC.Controllers
 
             var auto = await _context.Auto
                 .Include(a => a.Solicitud)
-                .SingleOrDefaultAsync(m => m.SolicitudID == id);
+                .SingleOrDefaultAsync(m => m.ID == id);
             if (auto == null)
             {
                 return NotFound();
@@ -145,7 +145,7 @@ namespace AutosABC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var auto = await _context.Auto.SingleOrDefaultAsync(m => m.SolicitudID == id);
+            var auto = await _context.Auto.SingleOrDefaultAsync(m => m.ID == id);
             _context.Auto.Remove(auto);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -153,7 +153,7 @@ namespace AutosABC.Controllers
 
         private bool AutoExists(int id)
         {
-            return _context.Auto.Any(e => e.SolicitudID == id);
+            return _context.Auto.Any(e => e.ID == id);
         }
     }
 }

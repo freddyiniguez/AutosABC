@@ -5,7 +5,7 @@ namespace AutosABC.Models
 {
     public class Auto
     {
-        public int AutoID { get; set; }
+        public int ID { get; set; }
         public string Marca { get; set; }
         public string Modelo { get; set; }
         public string Folio { get; set; }
@@ -15,7 +15,6 @@ namespace AutosABC.Models
         [Display(Name = "Descripción Estética")]
         public string DescripcionEstetica { get; set; }
 
-        [ForeignKey("Solicitud")] 
         public int SolicitudID { get; set; }
         public virtual Solicitud Solicitud { get; set; } 
     }
