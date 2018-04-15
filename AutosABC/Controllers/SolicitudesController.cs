@@ -39,7 +39,23 @@ namespace AutosABC.Controllers
                 return NotFound();
             }
 
+            // It gets an Autos list within the Solicitud
+            List<Auto> AutoList = getCarsFromSolicitud(solicitud.SolicitudID);
+            ViewData["AutoList"] = AutoList;
+
             return View(solicitud);
+        }
+
+        // Method: TO obtain a list of Autos within a specific Solicitud
+        protected List<Auto> getCarsFromSolicitud(int id)
+        {
+            List<Auto> autos;
+
+            autos = (from auto in _context.Auto
+                     where auto.SolicitudID == id
+                     select auto).ToList();
+
+            return autos;
         }
 
         // GET: Solicitudes/Create

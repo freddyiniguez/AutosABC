@@ -33,3 +33,8 @@
         display: none;
     }
 }
+
+/* Paragraphs in About */
+.justified {
+    text-align: justify;
+}

@@ -1,7 +1,75 @@
 ﻿@{
-    ViewData["Title"] = "About";
+    ViewData["Title"] = "Prueba para Aspirantes";
 }
+
+<img src="~/images/toka_logo.svg" alt="TOKA Logo" style="margin-top: 30px;" />
 <h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>
 
-<p>Use this area to provide additional information.</p>
+<p class="justified">
+    Al cliente transportista de autos “ABC” le ha surgido la necesidad de construir un sistema
+    para el control de autos que transporta desde Veracruz hasta Aguascalientes.
+</p>
+
+<p class="justified">
+    Actualmente, cada vez que necesitan transportar un lote de autos generan una solicitud de
+    transporte la cual incluye la fecha y número de lote. Posteriormente, en dicha solicitud
+    registran los autos que llegan desde Alemania en una bitácora donde se llena lo siguiente:
+    marca, modelo, folio, color, tipo de transmisión, y descripción estética.
+</p>
+
+<p class="justified">
+    Dada la problemática el cliente requiere tener un sistema para registrar los datos de la
+    solicitud y su bitácora en un sistema. Asimismo, la información se complementa entre cada
+    cambio de transporte, en donde los automóviles se pasan de un transporte a otro.
+</p>
+
+<p>
+    Por lo tanto, se requiere:
+</p>
+
+<ul>
+    <li>Realizar un registro de solicitud de transporte de automóviles.</li>
+    <li>Agregar automóviles a la solicitud realizada.</li>
+    <li>Mostrar la lista de automóviles que se encuentran en la solicitud de transporte.</li>
+    <li>
+        Permitir editar el registro de cada automóvil con el objetivo de complementar los datos
+        de este.
+    </li>
+    <li>
+        Generar un reporte solo en TSQL en donde se obtenga la cantidad de autos
+        agrupados por marca y modelo, ordenados por folio donde el color sea blanco.
+    </li>
+</ul>
+
+<p>
+    <strong>Notas de implementación:</strong>
+</p>
+
+<ul>
+    <li>
+        Se debe generar el código TSQL de la base de datos SQL Server. Considerando la
+        generación de tablas y procedimientos almacenados para guardar, editar y consultar
+        información.
+    </li>
+    <li>
+        La parte gráfica del sistema debe ser una interfaz web. Es libre el uso de cualquier
+        Framework HTML, CSS y JS. - El código debe estar lo más legible posible.
+    </li>
+    <li>
+        El código debe estar listo para ser compilado y ejecutado.
+    </li>
+    <li>
+        Debe ser una solución con Visual Studio 2015 o superior usando el lenguaje C# y un
+        proyecto MVC .NET.
+    </li>
+    <li>
+        Todo lo que no se especifica en este documento queda bajo el criterio del
+        desarrollador, por ejemplo, pueden utilizar un API .NET y un MVC .NET o simplemente
+        MVC .NET y conexión a base de datos.
+    </li>
+    <li>
+        La prueba debe ser versionada en Git y preferentemente subirla en un repositorio en
+        GITHUB, GITLAB o BITBUCKET.
+    </li>
+</ul>

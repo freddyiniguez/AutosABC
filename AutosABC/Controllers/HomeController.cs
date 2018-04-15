@@ -17,7 +17,7 @@ namespace AutosABC.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Proyecto 'Transporte de Autos ABC'";
 
             return View();
         }

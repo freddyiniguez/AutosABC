@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<AutosABC.Models.Solicitud>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Solicitudes";
 }
 
-<h2>Index</h2>
+<h2>Solicitudes de Transporte</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -18,7 +18,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.NumeroLote)
                 </th>
-            <th></th>
+                <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -31,9 +31,9 @@
                 @Html.DisplayFor(modelItem => item.NumeroLote)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.SolicitudID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.SolicitudID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.SolicitudID">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.SolicitudID" title="Editar"><i class="fa fa-edit"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.SolicitudID" title="Ver Detalles"><i class="fa fa-search-plus"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.SolicitudID" title="Eliminar"><i class="fa fa-trash"></i></a>
             </td>
         </tr>
 }

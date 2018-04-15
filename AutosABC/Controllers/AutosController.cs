@@ -44,6 +44,14 @@ namespace AutosABC.Controllers
             return View(auto);
         }
 
+        // GET: Autos/Crear/5
+        // Method controller to create a new Auto within a specific SolicitudID
+        public IActionResult Crear(int id)
+        {
+            ViewData["SolicitudID"] = id;
+            return View();
+        }
+
         // GET: Autos/Create
         public IActionResult Create()
         {

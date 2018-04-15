@@ -1,10 +1,10 @@
 ﻿@model AutosABC.Models.Solicitud
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalles";
 }
 
-<h2>Details</h2>
+<h2>Detalles</h2>
 
 <div>
     <h4>Solicitud</h4>
@@ -21,6 +21,44 @@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.NumeroLote)
+        </dd>
+        <dt style="margin-top: 30px;">
+            Autos en la solicitud
+        </dt>
+        <dd style="margin-top: 30px;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Folio</th>
+                        <th>Descripción Estética</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                @foreach (var item in ViewData["AutoList"] as IEnumerable<AutosABC.Models.Auto>)
+        {
+            <tr>
+                <td>@item.Marca</td>
+                <td>@item.Modelo</td>
+                <td>@item.Folio</td>
+                <td>@item.DescripcionEstetica</td>
+                <td>
+                    @Html.ActionLink("Editar",
+                   "Edit",
+                   "Autos",
+                   new { @item.ID },
+                   null)
+                </td>
+            </tr>
+}
+            </table>
+            <!-- Nuevo auto-->
+            @Html.ActionLink("NUEVO",
+                           "Crear",
+                           "Autos",
+                           new { @Model.SolicitudID },
+                           null)
         </dd>
     </dl>
 </div>
