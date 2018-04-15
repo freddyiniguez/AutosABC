@@ -1,0 +1,30 @@
+﻿@model AutosABC.Models.Solicitud
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Solicitud</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroLote)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumeroLote)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.SolicitudID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
