@@ -67,7 +67,6 @@ namespace AutosABC.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Details", "Solicitudes", new { id = auto.SolicitudID });
             }
-            ViewData["ErrorMessage"] = "Ha ocurrido un error al crear el Auto.";
             return RedirectToAction("Details", "Solicitudes", new { id = auto.SolicitudID });
 
         }
