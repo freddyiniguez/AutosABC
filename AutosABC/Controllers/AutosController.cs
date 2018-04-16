@@ -21,6 +21,7 @@ namespace AutosABC.Controllers
         // GET: Autos
         public async Task<IActionResult> Index()
         {
+            ViewData["TSQL"] = -1;
             var autosABCContext = _context.Auto.Include(a => a.Solicitud);
             return View(await autosABCContext.ToListAsync());
         }
@@ -181,6 +182,32 @@ namespace AutosABC.Controllers
         private bool AutoExists(int id)
         {
             return _context.Auto.Any(e => e.ID == id);
+        }
+
+        // TSQL Report
+        // Performs a TSQL query to obtain the number of Autos with a specific condition.
+        public async Task<IActionResult> TSQL()
+        {
+            var autosABCContext = _context.Auto.Include(a => a.Solicitud);
+
+            List<Auto> autos;
+
+            // TSQL CONCEPTUAL
+            // La siguiente implementación marca un error al momento de agruparlos.
+            /* autos = (from auto in _context.Auto
+                     group auto by auto.Marca && auto.Modelo into autoGroup
+                     where autoGroup.Color == "Blanco"
+                     orderby autoGroup.Folio ascending
+                     select autoGroup).ToList(); */
+
+            // TSQL FUNCIONAL
+            autos = (from auto in _context.Auto
+                     where auto.Color == "Blanco"
+                     orderby auto.Folio ascending
+                     select auto).ToList();
+
+            ViewData["TSQL"] = autos.Count;
+            return View("Index", await autosABCContext.ToListAsync());
         }
     }
 }

@@ -9,6 +9,22 @@
 <p>
     <a asp-action="Create">Crear Auto</a>
 </p>
+
+<div class="col-md-4"></div>
+<div class="alert alert-success col-md-4" role="alert">
+    <h4 class="alert-heading">Reporte TSQL</h4>
+    <p style="text-align: justify;">Esta funcionalidad consiste en generar un reporte en TSQL donde se obtenga <strong>la cantidad de autos agrupados por marca y modelo, ordenados por folio donde el color sea blanco.</strong></p>
+    <hr>
+    <p class="mb-0" style="text-align: center;">
+        <a class="btn btn-default" asp-area="" asp-controller="Autos" asp-action="TSQL">Resultado</a>
+        @if ((int)@ViewData["TSQL"] > 0)
+        {
+            <p style="color:red;">Cantidad de autos: @ViewData["tsql"]</p>
+        }
+        </p>
+    </div>
+<div class="col-md-4"></div>
+
 <table class="table">
     <thead>
         <tr>
