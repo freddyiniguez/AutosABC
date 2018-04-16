@@ -26,13 +26,15 @@
         <dt style="margin-top: 30px;">
             Autos en la solicitud
         </dt>
-        <dd style="margin-top: 30px;">
+        <dd style="margin-top: 25px;">
             <table class="table">
                 <thead>
                     <tr>
                         <th>Marca</th>
                         <th>Modelo</th>
                         <th>Folio</th>
+                        <th>Color</th>
+                        <th>Tipo de Transmisión</th>
                         <th>Descripción Estética</th>
                         <th>Acciones</th>
                     </tr>
@@ -43,26 +45,21 @@
                         <td>@item.Marca</td>
                         <td>@item.Modelo</td>
                         <td>@item.Folio</td>
+                        <td>@item.Color</td>
+                        <td>@item.TipoTransmision</td>
                         <td>@item.DescripcionEstetica</td>
                         <td>
-                            @Html.ActionLink("Editar",
-                                               "Edit",
-                                               "Autos",
-                                               new { @item.ID },
-                                               null)
+                            <i class="fa fa-edit"></i>
+                            @Html.ActionLink("Editar","Edit","Autos",new { @item.ID },null)
                         </td>
                     </tr>
                 }
             </table>
-            @Html.ActionLink("NUEVO",
-                                               "Crear",
-                                               "Autos",
-                                               new { @Model.SolicitudID },
-                                               null)
+            @Html.ActionLink("Crear Auto en Solicitud","Crear","Autos",new { @Model.SolicitudID },null)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.SolicitudID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.SolicitudID">Editar</a> |
+    <a asp-action="Index">Regresar al Listado</a>
 </div>
